@@ -52,12 +52,18 @@ export default function Game() {
 	return (
 		<div>
 			<h2>Game Page</h2>
-			<Map />
-			<Room roomData={roomData} />
-			<Inventory />
-			<Dashboard playerInfo={playerInfo} />
-			<Controls />
-			<Chat players={players} />
+			{user.isLoading ? (
+				<div>Loading...</div>
+			) : (
+				<>
+					<Map />
+					<Room roomData={roomData} />
+					<Inventory />
+					<Dashboard playerInfo={playerInfo} />
+					<Controls />
+					<Chat players={players} />
+				</>
+			)}
 		</div>
 	);
 }

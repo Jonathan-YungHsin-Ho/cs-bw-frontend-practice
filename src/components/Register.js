@@ -59,7 +59,7 @@ export default function Register() {
 
 					<label htmlFor='password1'>Password 1: </label>
 					<input
-						type='text'
+						type='password'
 						id='password1'
 						name='password1'
 						placeholder='Password 1'
@@ -69,7 +69,7 @@ export default function Register() {
 
 					<label htmlFor='password1'>Password 2: </label>
 					<input
-						type='text'
+						type='password'
 						id='password2'
 						name='password2'
 						placeholder='Password 2'
