@@ -25,7 +25,6 @@ export const userReducer = (state = initialUserState, action) => {
 				isLoggedIn: false,
 				isLoading: false,
 			};
-
 		case 'LOGIN_START':
 			return {
 				...state,
@@ -49,23 +48,6 @@ export const userReducer = (state = initialUserState, action) => {
 			return {
 				...state,
 				isLoggedIn: true,
-			};
-		case 'GET_DATA_START':
-			return {
-				...state,
-				error: '',
-				isLoading: true,
-			};
-		case 'GET_DATA_SUCCESS':
-			return {
-				...state,
-				isLoading: false,
-			};
-		case 'GET_DATA_FAILURE':
-			return {
-				...state,
-				error: 'Sorry, error retrieving game data',
-				isLoading: false,
 			};
 		case 'LOGOUT':
 			return {

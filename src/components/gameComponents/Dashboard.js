@@ -1,10 +1,16 @@
 import React from 'react';
 
-export default function Dashboard({ playerInfo }) {
+import { useDataContext } from '../../contexts/DataContext';
+
+export default function Dashboard() {
+	const {
+		data: { name },
+	} = useDataContext();
+
 	return (
 		<div>
 			<h3>Dashboard</h3>
-			<p>Player: {playerInfo.name}</p>
+			<p>Player: {name}</p>
 		</div>
 	);
 }

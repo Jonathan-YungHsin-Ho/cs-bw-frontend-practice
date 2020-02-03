@@ -1,10 +1,16 @@
 import React from 'react';
 
-export default function Room({ roomData }) {
+import { useDataContext } from '../../contexts/DataContext';
+
+export default function Room() {
+	const {
+		data: { title, description },
+	} = useDataContext();
+
 	return (
 		<div>
-			<h3>{roomData.title}</h3>
-			<p>{roomData.description}</p>
+			<h3>{title}</h3>
+			<p>{description}</p>
 		</div>
 	);
 }

@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function Chat({ players }) {
+import { useDataContext } from '../../contexts/DataContext';
+
+export default function Chat() {
+	const {
+		data: { players },
+	} = useDataContext();
+
 	return (
 		<div>
 			<h3>Chat</h3>

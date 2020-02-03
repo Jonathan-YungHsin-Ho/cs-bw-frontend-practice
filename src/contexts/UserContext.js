@@ -5,6 +5,7 @@ const UserContext = createContext();
 
 export default function UserProvider({ children }) {
 	const [user, dispatch] = useReducer(userReducer, initialUserState);
+
 	return (
 		<UserContext.Provider value={{ user, dispatch }}>
 			{children}
@@ -17,5 +18,6 @@ export function useUserContext() {
 	if (context === undefined) {
 		throw new Error('useUserContext must be used within UserProvider');
 	}
+
 	return context;
 }

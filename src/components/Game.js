@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-import { useUserContext } from '../contexts/UserContext';
+import { useDataContext } from '../contexts/DataContext';
 
 import Map from './gameComponents/Map';
 import Room from './gameComponents/Room';
@@ -11,19 +11,10 @@ import Controls from './gameComponents/Controls';
 import Chat from './gameComponents/Chat';
 
 export default function Game() {
-	const { user, dispatch } = useUserContext();
-
-	const [roomData, setRoomData] = useState({
-		id: '',
-		title: '',
-		description: '',
-	});
-
-	const [playerInfo, setPlayerInfo] = useState({
-		name: '',
-	});
-
-	const [players, setPlayers] = useState([]);
+	const {
+		data: { isLoading },
+		dispatch,
+	} = useDataContext();
 
 	useEffect(() => {
 		dispatch({ type: 'GET_DATA_START' });
@@ -32,16 +23,16 @@ export default function Game() {
 			.get('/adv/init/')
 			.then(res => {
 				// console.log(res.data);
-				setRoomData({
-					id: res.data.uuid,
-					title: res.data.title,
-					description: res.data.description,
+				dispatch({
+					type: 'GET_DATA_SUCCESS',
+					payload: {
+						// uuid: res.data.uuid,
+						name: res.data.name,
+						title: res.data.title,
+						description: res.data.description,
+						players: res.data.players,
+					},
 				});
-				setPlayerInfo({
-					name: res.data.name,
-				});
-				setPlayers(res.data.players);
-				dispatch({ type: 'GET_DATA_SUCCESS' });
 			})
 			.catch(err => {
 				// console.log(err);
@@ -52,16 +43,16 @@ export default function Game() {
 	return (
 		<div>
 			<h2>Game Page</h2>
-			{user.isLoading ? (
+			{isLoading ? (
 				<div>Loading...</div>
 			) : (
 				<>
 					<Map />
-					<Room roomData={roomData} />
+					<Room />
 					<Inventory />
-					<Dashboard playerInfo={playerInfo} />
+					<Dashboard />
 					<Controls />
-					<Chat players={players} />
+					<Chat />
 				</>
 			)}
 		</div>

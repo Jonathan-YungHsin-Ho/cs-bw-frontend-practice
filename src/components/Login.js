@@ -6,8 +6,12 @@ import { useUserContext } from '../contexts/UserContext';
 import { baseURL } from '../utils/baseURL';
 
 export default function Login() {
-	const { user, dispatch } = useUserContext();
 	const history = useHistory();
+
+	const {
+		user: { isLoading, error },
+		dispatch,
+	} = useUserContext();
 
 	const [credentials, setCredentials] = useState({
 		username: '',
@@ -38,7 +42,7 @@ export default function Login() {
 	return (
 		<div>
 			<h2>Login:</h2>
-			{user.isLoading ? (
+			{isLoading ? (
 				<div>Loading...</div>
 			) : (
 				<form onSubmit={handleSubmit}>
@@ -64,7 +68,7 @@ export default function Login() {
 
 					<button type='submit'>Login</button>
 
-					{user.error && <div>{user.error}</div>}
+					{error && <div>{error}</div>}
 				</form>
 			)}
 		</div>

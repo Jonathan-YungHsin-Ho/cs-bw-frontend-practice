@@ -6,8 +6,12 @@ import { useUserContext } from '../contexts/UserContext';
 import { baseURL } from '../utils/baseURL';
 
 export default function Register() {
-	const { user, dispatch } = useUserContext();
 	const history = useHistory();
+
+	const {
+		user: { isLoading, error },
+		dispatch,
+	} = useUserContext();
 
 	const [registrationInfo, setRegistrationInfo] = useState({
 		username: '',
@@ -43,7 +47,7 @@ export default function Register() {
 	return (
 		<div>
 			<h2>Register:</h2>
-			{user.isLoading ? (
+			{isLoading ? (
 				<div>Loading...</div>
 			) : (
 				<form onSubmit={handleSubmit}>
@@ -79,7 +83,7 @@ export default function Register() {
 
 					<button type='submit'>Register</button>
 
-					{user.error && <div>{user.error}</div>}
+					{error && <div>{error}</div>}
 				</form>
 			)}
 		</div>

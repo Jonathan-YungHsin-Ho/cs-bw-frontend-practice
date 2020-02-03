@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 
 import UserProvider from './contexts/UserContext';
+import DataProvider from './contexts/DataContext';
 
 import Nav from './components/Nav';
 import Home from './components/Home';
@@ -21,7 +22,9 @@ function App() {
 				<Route path='/about' component={About} />
 				<Route path='/login' component={Login} />
 				<Route path='/register' component={Register} />
-				<PrivateRoute path='/game' component={Game} />
+				<DataProvider>
+					<PrivateRoute path='/game' component={Game} />
+				</DataProvider>
 			</UserProvider>
 		</div>
 	);
