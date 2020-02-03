@@ -12,7 +12,7 @@ import Chat from './gameComponents/Chat';
 
 export default function Game() {
 	const {
-		data: { isLoading },
+		// data: { isLoading },
 		dispatch,
 	} = useDataContext();
 
@@ -43,18 +43,18 @@ export default function Game() {
 	return (
 		<div>
 			<h2>Game Page</h2>
-			{isLoading ? (
+			{/* {isLoading ? (
 				<div>Loading...</div>
 			) : (
-				<>
-					<Map />
-					<Room />
-					<Inventory />
-					<Dashboard />
-					<Controls />
-					<Chat />
-				</>
-			)}
+				<> */}
+			<Map />
+			<Room />
+			<Inventory />
+			<Dashboard />
+			<Controls />
+			<Chat />
+			{/* </>
+			)} */}
 		</div>
 	);
 }

@@ -38,6 +38,7 @@ export const dataReducer = (state = initialDataState, action) => {
 			return {
 				...state,
 				error: '',
+				error_msg: '',
 				isLoading: true,
 			};
 		case 'MOVE_SUCCESS':

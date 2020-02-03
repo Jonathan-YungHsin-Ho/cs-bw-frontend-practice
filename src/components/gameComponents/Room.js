@@ -4,13 +4,20 @@ import { useDataContext } from '../../contexts/DataContext';
 
 export default function Room() {
 	const {
-		data: { title, description },
+		data: { isLoading, title, description },
 	} = useDataContext();
 
 	return (
 		<div>
-			<h3>{title}</h3>
-			<p>{description}</p>
+			<h3>Room</h3>
+			{isLoading ? (
+				<div>Loading...</div>
+			) : (
+				<>
+					<h4>{title}</h4>
+					<p>{description}</p>
+				</>
+			)}
 		</div>
 	);
 }
